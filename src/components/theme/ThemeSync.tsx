@@ -12,11 +12,8 @@ export function ThemeSync() {
       const cookieMatch = document.cookie.match(/(?:^|;\s*)theme=(dark|light)/);
       const cookieTheme = cookieMatch?.[1];
 
-      // First visit ever: fall back to the OS preference
-      const theme =
-        stored ||
-        cookieTheme ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      // Default is light mode — dark only if the user explicitly chose it
+      const theme = stored || cookieTheme || 'light';
 
       document.documentElement.classList.toggle('dark', theme === 'dark');
 
