@@ -1,0 +1,104 @@
+{
+  "Index": {
+    "title": "The case became your case",
+    "description": "Litigation funding platform for the Saudi and GCC market",
+    "nav": {
+      "howItWorks": "How it works",
+      "opportunities": "Opportunities",
+      "forApplicants": "For case owners",
+      "forInvestors": "For investors",
+      "faq": "FAQ",
+      "contact": "Contact",
+      "login": "Login",
+      "startNow": "Start now"
+    },
+    "hero": {
+      "subHeadline": "Fund strong legal cases or get your litigation costs financed.",
+      "ctaFund": "Fund your case",
+      "ctaInvest": "Start investing",
+      "trust1": "Sharia-reviewed structure",
+      "trust2": "Segregated accounts",
+      "trust3": "Data protection"
+    },
+    "stats": {
+      "volume": "Funded Volume (SAR)",
+      "cases": "Cases Funded",
+      "investors": "Investor Community",
+      "reviewTime": "Avg. Review Days"
+    },
+    "howItWorks": {
+      "title": "How it works",
+      "step1": "Submit case",
+      "step2": "Committee review",
+      "step3": "Funding opens",
+      "step4": "Returns distributed"
+    },
+    "forApplicants": {
+      "title": "For case owners",
+      "benefit1": "No upfront legal costs",
+      "benefit2": "Keep control of your case",
+      "benefit3": "Fast decision",
+      "cta": "Submit your case"
+    },
+    "forInvestors": {
+      "title": "For investors",
+      "benefit1": "Vetted opportunities",
+      "benefit2": "Case-level SPV transparency",
+      "benefit3": "Risk disclosure",
+      "cta": "Open investor account",
+      "riskWarning": "Please read the risk disclosure. Returns are not guaranteed."
+    },
+    "featured": {
+      "title": "Featured opportunities",
+      "viewDetails": "View details"
+    },
+    "trust": {
+      "title": "Why us / Trust & security",
+      "feature1": "Segregated investor accounts",
+      "feature2": "Independent judicial committee",
+      "feature3": "Full data encryption (PDPL-ready)",
+      "feature4": "Transparent waterfall distribution"
+    },
+    "partners": {
+      "title": "Partners"
+    },
+    "clients": {
+      "title": "Clients & Testimonials"
+    },
+    "faq": {
+      "title": "FAQ"
+    },
+    "footer": {
+      "ctaText": "Ready to start?",
+      "regulatoryStatus": "Under licensing by competent authorities",
+      "terms": "Terms",
+      "privacy": "Privacy/PDPL",
+      "riskDisclosure": "Risk Disclosure"
+    }
+  },
+  "Auth": {
+    "login": {
+      "title": "Login",
+      "description": "Enter your email and password to access your account",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Login",
+      "noAccount": "Don't have an account?",
+      "registerLink": "Register now"
+    },
+    "register": {
+      "title": "Create new account",
+      "description": "Join the INSAF platform as an investor or case owner",
+      "accountType": "Account Type",
+      "investor": "Investor",
+      "applicant": "Case Owner (Applicant)",
+      "fullName": "Full Name",
+      "phone": "Phone Number",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create Account",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Login"
+    }
+  }
+}
