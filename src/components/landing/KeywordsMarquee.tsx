@@ -46,8 +46,11 @@ export function KeywordsMarquee({ locale }: KeywordsMarqueeProps) {
   );
 
   return (
-    <div className="marquee-hover overflow-hidden border-y border-border/60 py-3" aria-hidden>
-      <div dir="ltr" className="marquee-track flex w-max">
+    // Wrapper is dir="ltr" so the oversized track anchors to the LEFT edge —
+    // in an RTL overflow container Chrome anchors oversized content to the
+    // right and the sliding track gets composited outside the clip (cards vanish).
+    <div dir="ltr" className="marquee-hover overflow-hidden border-y border-border/60 py-3" aria-hidden>
+      <div className="marquee-track flex w-max">
         <Row />
         <Row />
       </div>

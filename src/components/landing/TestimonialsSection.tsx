@@ -54,7 +54,7 @@ export function TestimonialsSection({ locale, testimonialsData }: TestimonialsSe
       : defaultList;
 
   const Card = ({ t }: { t: TestimonialItem }) => (
-    <figure className="w-80 shrink-0 rounded-3xl border border-border/70 bg-card shadow-sm p-6 flex flex-col">
+    <figure dir={isAr ? 'rtl' : 'ltr'} className="w-80 shrink-0 rounded-3xl border border-border/70 bg-card shadow-sm p-6 flex flex-col text-start">
       <Quote className="w-5 h-5 text-[#C09A4A] mb-4" aria-hidden />
       <blockquote className="text-sm text-foreground leading-relaxed mb-5 line-clamp-5">
         {t.content}
@@ -90,9 +90,12 @@ export function TestimonialsSection({ locale, testimonialsData }: TestimonialsSe
         </div>
       </div>
 
-      {/* Auto-scrolling seamless marquee of quote cards — track forced LTR for a true loop */}
-      <div className="marquee-hover overflow-hidden">
-        <div dir="ltr" className="marquee-track flex w-max" style={{ animationDuration: '45s' }}>
+      {/* Auto-scrolling seamless marquee of quote cards.
+          Wrapper is dir="ltr" so the oversized track anchors to the LEFT edge;
+          in an RTL overflow container Chrome anchors oversized content right and
+          the animated track gets composited outside the clip (cards vanished). */}
+      <div dir="ltr" className="marquee-hover overflow-hidden">
+        <div className="marquee-track flex w-max" style={{ animationDuration: '45s' }}>
           <Row />
           <Row />
         </div>
