@@ -38,7 +38,7 @@ export function HowItWorksSteps({ locale }: HowItWorksStepsProps) {
   ];
 
   return (
-    <section id="how-it-works" className="py-20 md:py-28">
+    <section id="how-it-works" className="py-16 md:py-24">
       <div className="container mx-auto px-6 max-w-5xl">
         {/* Heading */}
         <div className="max-w-2xl mb-14">

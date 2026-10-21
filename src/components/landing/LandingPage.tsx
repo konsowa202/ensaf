@@ -3,6 +3,7 @@ import { cookies } from 'next/headers';
 import { createClient } from '@/utils/supabase/server';
 import { LandingHeader } from '@/components/landing/LandingHeader';
 import { HeroSection } from '@/components/landing/HeroSection';
+import { KeywordsMarquee } from '@/components/landing/KeywordsMarquee';
 import { StatsStrip } from '@/components/landing/StatsStrip';
 import { HowItWorksSteps } from '@/components/landing/HowItWorksSteps';
 import { FeaturedCasesSection } from '@/components/landing/FeaturedCasesSection';
@@ -10,6 +11,7 @@ import { SolutionsSplit } from '@/components/landing/SolutionsSplit';
 import { TestimonialsSection } from '@/components/landing/TestimonialsSection';
 import { FaqSection } from '@/components/landing/FaqSection';
 import { RoyalFooter } from '@/components/landing/RoyalFooter';
+import { Reveal } from '@/components/landing/Reveal';
 
 interface LandingPageProps {
   locale: string;
@@ -52,29 +54,42 @@ export async function LandingPage({ locale }: LandingPageProps) {
       <LandingHeader locale={locale} user={user} />
 
       <main>
-        {/* 1. Hero */}
+        {/* 1. Hero (self-animated entrance + background wordmark) */}
         <HeroSection locale={locale} />
 
-        {/* 2. Stats strip */}
+        {/* 2. Infinite keyword marquee */}
+        <KeywordsMarquee locale={locale} />
+
+        {/* 3. Stats strip (count-up on view) */}
         <StatsStrip locale={locale} />
 
-        {/* 3. How it works */}
-        <HowItWorksSteps locale={locale} />
+        {/* 4. How it works */}
+        <Reveal>
+          <HowItWorksSteps locale={locale} />
+        </Reveal>
 
-        {/* 4. Featured cases */}
-        <FeaturedCasesSection locale={locale} publicCases={publicCases} />
+        {/* 5. Featured cases */}
+        <Reveal>
+          <FeaturedCasesSection locale={locale} publicCases={publicCases} />
+        </Reveal>
 
-        {/* 5. For investors / for claimants */}
-        <SolutionsSplit locale={locale} />
+        {/* 6. For investors / for claimants */}
+        <Reveal>
+          <SolutionsSplit locale={locale} />
+        </Reveal>
 
-        {/* 6. Testimonials */}
-        <TestimonialsSection locale={locale} testimonialsData={comments} />
+        {/* 7. Testimonials */}
+        <Reveal>
+          <TestimonialsSection locale={locale} testimonialsData={comments} />
+        </Reveal>
 
-        {/* 7. FAQ */}
-        <FaqSection locale={locale} faqsData={faqs} />
+        {/* 8. FAQ */}
+        <Reveal>
+          <FaqSection locale={locale} faqsData={faqs} />
+        </Reveal>
       </main>
 
-      {/* 8. Footer (unchanged) */}
+      {/* Footer (unchanged) */}
       <RoyalFooter locale={locale} />
     </div>
   );

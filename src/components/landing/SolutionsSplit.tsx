@@ -58,7 +58,7 @@ export function SolutionsSplit({ locale }: SolutionsSplitProps) {
   ];
 
   return (
-    <section id="solutions" className="py-20 md:py-28 border-t border-border/60">
+    <section id="solutions" className="py-16 md:py-24 border-t border-border/60">
       <div className="container mx-auto px-6 max-w-5xl">
         <div className="max-w-2xl mb-14">
           <p className="text-sm font-bold tracking-wide text-[#C09A4A] mb-3">

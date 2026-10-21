@@ -1,12 +1,7 @@
 'use client';
 
-import React from 'react';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+import React, { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
 
 interface FaqItem {
   id: string;
@@ -23,6 +18,7 @@ interface FaqSectionProps {
 
 export function FaqSection({ locale, faqsData }: FaqSectionProps) {
   const isAr = locale !== 'en';
+  const [openIndex, setOpenIndex] = useState<number>(0);
 
   const defaultFaqs: FaqItem[] = [
     {
@@ -75,9 +71,9 @@ export function FaqSection({ locale, faqsData }: FaqSectionProps) {
   const faqs = faqsData && faqsData.length > 0 ? faqsData : defaultFaqs;
 
   return (
-    <section id="faq" className="py-20 md:py-28 border-t border-border/60">
-      <div className="container mx-auto px-6 max-w-3xl">
-        <div className="text-center mb-12">
+    <section id="faq" className="py-16 md:py-24 border-t border-border/60">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12 max-w-2xl mx-auto">
           <p className="text-sm font-bold tracking-wide text-[#C09A4A] mb-3">
             {isAr ? 'الأسئلة الشائعة' : 'FAQ'}
           </p>
@@ -86,18 +82,49 @@ export function FaqSection({ locale, faqsData }: FaqSectionProps) {
           </h2>
         </div>
 
-        <Accordion className="w-full">
-          {faqs.map((faq, idx) => (
-            <AccordionItem key={faq.id || idx} value={`item-${idx}`} className="border-b border-border/60">
-              <AccordionTrigger className="text-base font-bold text-foreground hover:no-underline py-5 text-start">
-                {isAr ? faq.question_ar : faq.question_en}
-              </AccordionTrigger>
-              <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-5">
-                {isAr ? faq.answer_ar : faq.answer_en}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <div className="max-w-2xl mx-auto border-t border-border/60">
+          {faqs.map((faq, idx) => {
+            const open = openIndex === idx;
+            return (
+              <div key={faq.id || idx} className="border-b border-border/60">
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(open ? -1 : idx)}
+                  aria-expanded={open}
+                  className="w-full flex items-center justify-between gap-4 py-5 text-start group"
+                >
+                  <span
+                    className={`text-base font-bold transition-colors ${
+                      open
+                        ? 'text-[#0E5B34] dark:text-[#C09A4A]'
+                        : 'text-foreground group-hover:text-[#0E5B34] dark:group-hover:text-[#C09A4A]'
+                    }`}
+                  >
+                    {isAr ? faq.question_ar : faq.question_en}
+                  </span>
+                  <ChevronDown
+                    className={`w-4 h-4 shrink-0 text-muted-foreground transition-transform duration-300 ${
+                      open ? 'rotate-180 text-[#0E5B34] dark:text-[#C09A4A]' : ''
+                    }`}
+                    aria-hidden
+                  />
+                </button>
+
+                <div
+                  className={`grid transition-all duration-300 ease-in-out ${
+                    open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="text-sm text-muted-foreground leading-relaxed pb-6">
+                      {isAr ? faq.answer_ar : faq.answer_en}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

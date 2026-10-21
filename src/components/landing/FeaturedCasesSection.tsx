@@ -83,7 +83,7 @@ export function FeaturedCasesSection({ locale, publicCases }: FeaturedCasesSecti
   const fmt = (n: number) => n.toLocaleString('en-US');
 
   return (
-    <section id="opportunities" className="py-20 md:py-28 border-t border-border/60">
+    <section id="opportunities" className="py-16 md:py-24 border-t border-border/60">
       <div className="container mx-auto px-6 max-w-6xl">
         {/* Heading */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
@@ -125,7 +125,7 @@ export function FeaturedCasesSection({ locale, publicCases }: FeaturedCasesSecti
               <Link
                 key={item.id}
                 href={`/${locale}/opportunities/${item.id}`}
-                className="group rounded-3xl border border-border/70 bg-card shadow-sm hover:shadow-md hover:border-[#0E5B34]/40 dark:hover:border-[#C09A4A]/40 transition-all p-6 flex flex-col"
+                className="group rounded-3xl border border-border/70 bg-card shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-[#0E5B34]/40 dark:hover:border-[#C09A4A]/40 transition-all duration-300 p-6 flex flex-col"
               >
                 <div className="flex items-center justify-between gap-2 mb-5">
                   <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0E5B34] dark:text-[#C09A4A]">
