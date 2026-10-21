@@ -44,11 +44,12 @@ export function KeywordsMarquee({ locale }: KeywordsMarqueeProps) {
 
   return (
     <div
-      dir={isAr ? 'rtl' : 'ltr'}
       className="marquee-hover marquee-fade overflow-hidden border-b border-border/60 py-5"
       aria-hidden
     >
-      <div className="animate-marquee flex w-max">
+      {/* Track is forced LTR internally so translateX(0 → -50%) is a true
+          seamless loop in both locales; text direction stays natural via bidi. */}
+      <div dir="ltr" className="animate-marquee flex w-max">
         <Row />
         <Row />
       </div>

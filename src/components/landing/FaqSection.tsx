@@ -71,8 +71,8 @@ export function FaqSection({ locale, faqsData }: FaqSectionProps) {
   const faqs = faqsData && faqsData.length > 0 ? faqsData : defaultFaqs;
 
   return (
-    <section id="faq" className="py-16 md:py-24 border-t border-border/60">
-      <div className="container mx-auto px-6">
+    <section id="faq" className="py-20 md:py-32">
+      <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <p className="text-sm font-bold tracking-wide text-[#C09A4A] mb-3">
             {isAr ? 'الأسئلة الشائعة' : 'FAQ'}

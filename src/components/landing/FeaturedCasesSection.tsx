@@ -83,8 +83,8 @@ export function FeaturedCasesSection({ locale, publicCases }: FeaturedCasesSecti
   const fmt = (n: number) => n.toLocaleString('en-US');
 
   return (
-    <section id="opportunities" className="py-16 md:py-24 border-t border-border/60">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <section id="opportunities" className="py-20 md:py-32 bg-surface/60 border-y border-border/50">
+      <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         {/* Heading */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
           <div className="max-w-2xl">

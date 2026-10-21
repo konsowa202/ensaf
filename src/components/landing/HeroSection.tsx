@@ -44,16 +44,16 @@ export function HeroSection({ locale }: HeroSectionProps) {
         }}
       />
 
-      <div className="relative z-10 container mx-auto px-6 pt-14 pb-16 md:pt-20 md:pb-24 max-w-5xl text-center">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 pt-16 pb-20 md:pt-24 md:pb-32 max-w-6xl text-center">
         {/* Eyebrow */}
-        <p className="animate-hero text-sm font-bold tracking-wide text-[#C09A4A] mb-6" style={{ animationDelay: '0ms' }}>
+        <p className="animate-hero text-sm font-bold tracking-wide text-[#C09A4A] mb-6" style={{ animationDelay: '1400ms' }}>
           {isAr ? 'منصة إنصاف لتمويل التقاضي' : 'INSAF · Litigation Funding Platform'}
         </p>
 
         {/* Headline */}
         <h1
           className="animate-hero text-4xl md:text-6xl font-black leading-[1.2] tracking-tight text-foreground mb-6"
-          style={{ animationDelay: '120ms' }}
+          style={{ animationDelay: '1520ms' }}
         >
           {isAr ? (
             <>
@@ -73,7 +73,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
         {/* Sub */}
         <p
           className="animate-hero text-base sm:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-10"
-          style={{ animationDelay: '240ms' }}
+          style={{ animationDelay: '1640ms' }}
         >
           {isAr
             ? 'تربط إنصاف أصحاب المطالبات المحقة بمستثمرين مؤهلين، عبر قضايا مدققة من لجنة مختصة واستثمار مُجزأ بالتوكنات — بتمويل غير قابل للرجوع على صاحب القضية.'
@@ -83,7 +83,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
         {/* CTAs — full-width stacked on mobile */}
         <div
           className="animate-hero flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 mb-14 max-w-md sm:max-w-none mx-auto"
-          style={{ animationDelay: '360ms' }}
+          style={{ animationDelay: '1760ms' }}
         >
           <Link
             href={`/${locale}/opportunities`}
@@ -103,7 +103,7 @@ export function HeroSection({ locale }: HeroSectionProps) {
         {/* Trust indicators — hairline, no frames */}
         <ul
           className="animate-hero flex flex-col sm:flex-row items-center justify-center gap-y-4 sm:gap-y-0 sm:divide-x sm:divide-border/70 rtl:sm:divide-x-reverse"
-          style={{ animationDelay: '480ms' }}
+          style={{ animationDelay: '1880ms' }}
         >
           {trustItems.map((item, i) => (
             <li key={i} className="flex items-center gap-2.5 sm:px-8 text-sm text-muted-foreground">

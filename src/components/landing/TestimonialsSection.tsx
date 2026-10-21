@@ -45,7 +45,7 @@ export function TestimonialsSection({ locale, testimonialsData }: TestimonialsSe
 
   const list: TestimonialItem[] =
     testimonialsData && testimonialsData.length > 0
-      ? testimonialsData.slice(0, 3).map((t: any, i: number) => ({
+      ? testimonialsData.map((t: any, i: number) => ({
           content: (isAr ? t.content_ar : t.content_en) || t.content || defaultList[i % 3].content,
           author: (isAr ? t.author_ar : t.author_en) || t.author || defaultList[i % 3].author,
           role: (isAr ? t.role_ar : t.role_en) || t.role || defaultList[i % 3].role,
@@ -53,34 +53,48 @@ export function TestimonialsSection({ locale, testimonialsData }: TestimonialsSe
         }))
       : defaultList;
 
+  const Card = ({ t }: { t: TestimonialItem }) => (
+    <figure className="w-80 shrink-0 rounded-3xl border border-border/70 bg-card shadow-sm p-6 flex flex-col">
+      <Quote className="w-5 h-5 text-[#C09A4A] mb-4" aria-hidden />
+      <blockquote className="text-sm text-foreground leading-relaxed mb-5 line-clamp-5">
+        {t.content}
+      </blockquote>
+      <figcaption className="mt-auto pt-4 border-t border-border/60">
+        <p className="text-sm font-extrabold text-foreground">{t.author}</p>
+        <p className="text-xs text-muted-foreground mt-0.5">
+          {t.role}
+          {t.city ? ` · ${t.city}` : ''}
+        </p>
+      </figcaption>
+    </figure>
+  );
+
+  const Row = () => (
+    <div className="flex shrink-0 gap-4 pe-4">
+      {list.map((t, i) => (
+        <Card key={i} t={t} />
+      ))}
+    </div>
+  );
+
   return (
-    <section className="py-16 md:py-24 border-t border-border/60">
-      <div className="container mx-auto px-6 max-w-5xl">
-        <div className="max-w-2xl mb-14">
+    <section className="py-20 md:py-32 bg-surface/60 border-y border-border/50 overflow-hidden">
+      <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+        <div className="max-w-2xl mb-12">
           <p className="text-sm font-bold tracking-wide text-[#C09A4A] mb-3">
             {isAr ? 'قصص حقيقية' : 'Real stories'}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-foreground">
+          <h2 className="text-3xl md:text-4xl font-black tracking-tight text-foreground">
             {isAr ? 'ماذا يقول عملاؤنا وشركاؤنا' : 'What our clients and partners say'}
           </h2>
         </div>
+      </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {list.map((t, i) => (
-            <figure key={i} className="rounded-3xl border border-border/70 bg-card shadow-sm p-7 flex flex-col">
-              <Quote className="w-5 h-5 text-[#C09A4A] mb-4" aria-hidden />
-              <blockquote className="text-sm text-foreground leading-relaxed mb-6">
-                {t.content}
-              </blockquote>
-              <figcaption className="mt-auto pt-4 border-t border-border/60">
-                <p className="text-sm font-extrabold text-foreground">{t.author}</p>
-                <p className="text-xs text-muted-foreground mt-0.5">
-                  {t.role}
-                  {t.city ? ` · ${t.city}` : ''}
-                </p>
-              </figcaption>
-            </figure>
-          ))}
+      {/* Auto-scrolling seamless marquee of quote cards — track forced LTR for a true loop */}
+      <div className="marquee-hover marquee-fade overflow-hidden" aria-hidden={false}>
+        <div dir="ltr" className="animate-marquee flex w-max" style={{ animationDuration: '52s' }}>
+          <Row />
+          <Row />
         </div>
       </div>
     </section>
