@@ -6,7 +6,7 @@ import { Logo } from '@/components/brand/logo';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from '@/components/theme/ThemeToggle';
 import { LanguageSwitcher } from '@/components/landing/LanguageSwitcher';
-import { Bot, Sparkles, Menu, X, ArrowLeft, ArrowRight, Scale } from 'lucide-react';
+import { Bot, Sparkles, Menu, X } from 'lucide-react';
 import { openInsafAi } from '@/components/landing/InsafAiAssistant';
 
 interface LandingHeaderProps {
@@ -29,9 +29,8 @@ export function LandingHeader({ locale, user }: LandingHeaderProps) {
 
   const navLinks = [
     { href: '#how-it-works', label: isAr ? 'كيف نعمل' : 'How it works' },
-    { href: '#solutions-by-role', label: isAr ? 'بوابات الأدوار' : 'Role Portals' },
-    { href: '#calculator', label: isAr ? 'حاسبة التمويل' : 'Finance Calculator' },
-    { href: '#opportunities', label: isAr ? 'الفرص الاستثمارية' : 'Case Deals' },
+    { href: '#opportunities', label: isAr ? 'الفرص الاستثمارية' : 'Opportunities' },
+    { href: '#solutions', label: isAr ? 'لمن نخدم' : 'Who we serve' },
     { href: '#faq', label: isAr ? 'الأسئلة الشائعة' : 'FAQ' },
   ];
 
