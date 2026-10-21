@@ -78,7 +78,7 @@ export function TestimonialsSection({ locale, testimonialsData }: TestimonialsSe
   );
 
   return (
-    <section className="py-20 md:py-32 bg-surface/60 border-y border-border/50 overflow-hidden">
+    <section className="py-16 md:py-24 bg-surface/60 border-y border-border/50 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <div className="max-w-2xl mb-12">
           <p className="text-sm font-bold tracking-wide text-[#C09A4A] mb-3">
@@ -91,8 +91,8 @@ export function TestimonialsSection({ locale, testimonialsData }: TestimonialsSe
       </div>
 
       {/* Auto-scrolling seamless marquee of quote cards — track forced LTR for a true loop */}
-      <div className="marquee-hover marquee-fade overflow-hidden" aria-hidden={false}>
-        <div dir="ltr" className="animate-marquee flex w-max" style={{ animationDuration: '52s' }}>
+      <div className="marquee-hover overflow-hidden">
+        <div dir="ltr" className="marquee-track flex w-max" style={{ animationDuration: '45s' }}>
           <Row />
           <Row />
         </div>

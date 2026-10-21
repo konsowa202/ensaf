@@ -38,8 +38,26 @@ export function HowItWorksSteps({ locale }: HowItWorksStepsProps) {
   ];
 
   return (
-    <section id="how-it-works" className="py-20 md:py-32">
-      <div className="container mx-auto px-4 md:px-6 max-w-6xl">
+    <section id="how-it-works" className="relative py-20 md:py-32 overflow-hidden">
+      {/* Soft brand wash so the glass cards read as glass (light mode); faint in dark */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(52rem 30rem at 12% 0%, rgba(14,91,52,0.08), transparent 60%), radial-gradient(46rem 26rem at 88% 100%, rgba(192,154,74,0.10), transparent 60%), linear-gradient(180deg, rgba(14,91,52,0.03), rgba(192,154,74,0.02))',
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 hidden dark:block"
+        style={{
+          background:
+            'radial-gradient(52rem 30rem at 12% 0%, rgba(63,169,116,0.06), transparent 60%), radial-gradient(46rem 26rem at 88% 100%, rgba(192,154,74,0.05), transparent 60%)',
+        }}
+      />
+
+      <div className="relative container mx-auto px-4 md:px-6 max-w-6xl">
         {/* Heading */}
         <div className="max-w-2xl mb-14">
           <p className="text-sm font-bold tracking-wide text-[#C09A4A] mb-3">
@@ -55,14 +73,17 @@ export function HowItWorksSteps({ locale }: HowItWorksStepsProps) {
           </p>
         </div>
 
-        {/* Steps */}
-        <ol className="grid md:grid-cols-3 gap-x-10 gap-y-12">
+        {/* Steps — glass cards */}
+        <ol className="grid md:grid-cols-3 gap-6">
           {steps.map((step) => (
-            <li key={step.n} className="relative">
+            <li
+              key={step.n}
+              className="relative rounded-3xl border border-white/50 dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur-md shadow-lg shadow-black/5 p-7"
+            >
               <span className="block text-5xl font-black text-[#0E5B34]/15 dark:text-[#C09A4A]/25 mb-4 select-none">
                 {step.n}
               </span>
-              <span className="absolute top-0 inset-inline-start-0 block w-10 h-px bg-[#C09A4A]" aria-hidden />
+              <span className="absolute top-7 inset-inline-start-7 block w-10 h-px bg-[#C09A4A]" aria-hidden />
               <h3 className="text-lg font-extrabold text-foreground mb-2 pt-2">
                 {isAr ? step.titleAr : step.titleEn}
               </h3>

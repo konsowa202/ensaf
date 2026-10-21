@@ -5,8 +5,11 @@ interface KeywordsMarqueeProps {
 }
 
 /**
- * Infinite-loop keyword marquee. Content duplicated for a seamless wrap;
- * pauses on hover; direction follows the locale (container dir).
+ * Infinite-loop keyword marquee.
+ * - Track wrapper is always dir="ltr" (stable translate math).
+ * - Direction is chosen per locale in CSS: [dir=rtl] .marquee-track uses
+ *   marquee-rtl (-50% → 0), so Arabic flows left→right (enters left, exits
+ *   right) and English right→left. Content duplicated exactly 2x = seamless.
  */
 export function KeywordsMarquee({ locale }: KeywordsMarqueeProps) {
   const isAr = locale !== 'en';
@@ -36,20 +39,15 @@ export function KeywordsMarquee({ locale }: KeywordsMarqueeProps) {
           <span className="px-8 text-sm font-bold tracking-wide text-muted-foreground whitespace-nowrap">
             {item}
           </span>
-          <span className="inline-block w-1.5 h-1.5 rotate-45 bg-[#C09A4A]/70" aria-hidden />
+          <span className="inline-block w-1.5 h-1.5 rotate-45 bg-[#C09A4A]/70 shrink-0" aria-hidden />
         </span>
       ))}
     </div>
   );
 
   return (
-    <div
-      className="marquee-hover marquee-fade overflow-hidden border-b border-border/60 py-5"
-      aria-hidden
-    >
-      {/* Track is forced LTR internally so translateX(0 → -50%) is a true
-          seamless loop in both locales; text direction stays natural via bidi. */}
-      <div dir="ltr" className="animate-marquee flex w-max">
+    <div className="marquee-hover overflow-hidden border-y border-border/60 py-3" aria-hidden>
+      <div dir="ltr" className="marquee-track flex w-max">
         <Row />
         <Row />
       </div>

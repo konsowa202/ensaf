@@ -191,18 +191,34 @@
   }
 }
 
-/* Seamless infinite marquee: track holds content twice, slide by exactly one copy */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+/* Seamless infinite marquee: track holds content exactly twice, slides by one copy.
+   Track wrapper is always dir="ltr" so translate math is stable;
+   direction is chosen per locale via the ancestor [dir] selector. */
+@keyframes marquee-ltr {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
-.animate-marquee {
-  animation: marquee 40s linear infinite;
+@keyframes marquee-rtl {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
 }
 
-.marquee-hover:hover .animate-marquee {
+.marquee-track {
+  animation: marquee-ltr 30s linear infinite;
+}
+
+[dir="rtl"] .marquee-track {
+  animation-name: marquee-rtl;
+}
+
+.marquee-hover:hover .marquee-track {
   animation-play-state: paused;
+}
+
+/* Legacy alias (kept for any older markup) */
+.animate-marquee {
+  animation: marquee-ltr 40s linear infinite;
 }
 
 /* Edge fade mask for marquee containers */
@@ -260,6 +276,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
+  .marquee-track,
   .wordmark-stroke,
   .wordmark-sink,
   .animate-hero {
